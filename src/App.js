@@ -10,8 +10,6 @@ function App() {
   const API_URL =
     "https://api.themoviedb.org/3/movie/popular?api_key=d1337c1b44a57da86382149c337ed82c";
 
-  const API_SEARCH = `https://api.themoviedb.org/3/discover/movie?api_key=d1337c1b44a57da86382149c337ed82c&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${releaseDate}&with_genres=${genre}`;
-
   useEffect(() => {
     fetch(API_URL)
       .then((response) => response.json())
@@ -28,7 +26,9 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(API_SEARCH)
+    fetch(
+      `https://api.themoviedb.org/3/discover/movie?api_key=d1337c1b44a57da86382149c337ed82c&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${releaseDate}&with_genres=${genre}`
+    )
       .then((response) => response.json())
       .then((data) => setMovies(data.results));
   };
