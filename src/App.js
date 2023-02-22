@@ -33,8 +33,6 @@ function App() {
       .then((data) => setMovies(data.results));
   };
 
-  console.log(movies);
-
   return (
     <div className="App">
       <div className="nav_bar">
